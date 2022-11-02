@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Stock data displayer{% endblock %}
+{% block title %}Yahoo Finance historical data displayer{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
@@ -12,8 +12,25 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <h1 class="main-headings">Stock data</h1>
-                <h3 class="main-headings">Apple Inc. (AAPL)</h3>
+                <h1 class="main-headings">Yahoo finance historical data</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control input-sm shadow-none" id="company-search-input" aria-describedby="company-search" placeholder="Search by company name and press &#x23CE;">
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <h3 class="main-headings">Apple Inc. [AAPL]</h3>
             </div>
         </div>
     </div>
