@@ -1,0 +1,12 @@
+@import url('https://fonts.cdnfonts.com/css/qhairo');
+
+
+.main-headings {
+    margin: 2%;
+    font-family: 'Qhairo', sans-serif;
+    font-weight: bold;
+}
+
+thead > tr > th {
+    font-family: 'Qhairo', sans-serif;
+}
