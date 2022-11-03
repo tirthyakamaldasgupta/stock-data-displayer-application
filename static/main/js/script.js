@@ -1,21 +1,12 @@
 function display_historical_data() {
+
     const company_name = $("#company-search-input").val();
+    $("#company-heading").text("");
+
+    $("#historical-data-container-table").find("thead").empty();
+    $("#historical-data-container-table").find("tbody").empty();
 
     if (company_name != '') {
-        $.ajax({
-            type: "GET",
-            url: "http://127.0.0.1:8000/" + company_name + "/information",
-            contentType: "application/json",
-            success: function (data) {
-                if (data["information"]) {
-                    $("#company-heading").text(data["information"]["display_name"]);
-                }
-            },
-            error: function (data) {
-                console.log("No results found");
-            }
-        });
-
         $.ajax({
             type: "GET",
             url: "http://127.0.0.1:8000/" + company_name + "/historical-data",
@@ -56,7 +47,22 @@ function display_historical_data() {
 
                 $("#company-search-input").val("");
             }
-        });             
+        });
+        
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/" + company_name + "/information",
+            contentType: "application/json",
+            success: function (data) {
+                if (data["information"]) {
+                    $("#company-heading").text(data["information"]["display_name"]);
+                }
+            },
+            error: function (data) {
+                $("#company-heading").text("Either no infomation about the company was found or you are not connected to the internet!")
+                console.log("No results found");
+            }
+        });
     }
 }
 
