@@ -48,7 +48,7 @@ function display_historical_data() {
                 $("#company-search-input").val("");
             }
         });
-        
+
         $.ajax({
             type: "GET",
             url: "http://127.0.0.1:8000/" + company_name + "/information",
@@ -59,7 +59,13 @@ function display_historical_data() {
                 }
             },
             error: function (data) {
-                $("#company-heading").text("Either no infomation about the company was found or you are not connected to the internet!")
+                $("#error-modal").find("p").text("Either no infomation about the company was found or you are not connected to the internet!");
+                $("#error-modal").fadeIn();
+
+                setTimeout(function () {
+                    $("#error-modal").fadeOut();
+                }, 5000);
+
                 console.log("No results found");
             }
         });
