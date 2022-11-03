@@ -2,15 +2,27 @@ function display_historical_data() {
     const company_name = $("#company-search-input").val();
 
     if (company_name != '') {
-        $("#company-heading").text(company_name);
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/" + company_name + "/information",
+            contentType: "application/json",
+            success: function (data) {
+                if (data["information"]) {
+                    $("#company-heading").text(data["information"]["display_name"]);
+                }
+            },
+            error: function (data) {
+                console.log("No results found");
+            }
+        });
 
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:8000/" + company_name,
+            url: "http://127.0.0.1:8000/" + company_name + "/historical-data",
             contentType: "application/json",
             success: function (data) {
-                if (data["result"].length > 0) {
-                    $.each(data["result"], function (index, item) {
+                if (data["historical_data"].length > 0) {
+                    $.each(data["historical_data"], function (index, item) {
                         $("#historical-data-container-table").find("tbody").append(
                             "<tr>" +
                             "<td>" + item["Open"] + "</td>" +

@@ -6,10 +6,10 @@ import yfinance as yahoo_finance
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, "main/index.html")
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def get_yahoo_finance_historical_data(request, company_name: str):
     company = yahoo_finance.Ticker(company_name)
 
@@ -18,13 +18,37 @@ def get_yahoo_finance_historical_data(request, company_name: str):
     if not historical_data.empty:
         return Response(
             {
-                "result": historical_data.T.to_dict().values()
+                "historical_data": historical_data.T.to_dict().values()
             },
             status.HTTP_200_OK
         )
     return Response(
         {
-            "result": []
+            "historical_data": []
+        },
+        status.HTTP_404_NOT_FOUND
+    )
+
+@api_view(["GET"])
+def get_yahoo_finance_company_information(request, company_name: str):
+    company = yahoo_finance.Ticker(company_name)
+
+    company_information = company.info
+
+    company_display_name = company_information["longName"] + " " + "[" + company_information["symbol"] + "]"
+
+    if company_display_name:
+        return Response(
+            {
+                "information": {
+                    "display_name": company_display_name
+                }
+            },
+            status.HTTP_200_OK
+        )
+    return Response(
+        {
+            "information": {}
         },
         status.HTTP_404_NOT_FOUND
     )
