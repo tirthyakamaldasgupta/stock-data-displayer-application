@@ -35,9 +35,9 @@ def get_yahoo_finance_company_information(request, company_name: str):
 
     company_information = company.info
 
-    company_display_name = company_information["longName"] + " " + "[" + company_information["symbol"] + "]"
-
-    if company_display_name:
+    if company_information:
+        company_display_name = company_information["longName"] + " " + "[" + company_information["symbol"] + "]"
+        
         return Response(
             {
                 "information": {

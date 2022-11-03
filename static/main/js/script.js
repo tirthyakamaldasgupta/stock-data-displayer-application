@@ -22,6 +22,18 @@ function display_historical_data() {
             contentType: "application/json",
             success: function (data) {
                 if (data["historical_data"].length > 0) {
+                    $("#historical-data-container-table").find("thead").append(
+                        "<tr>" +
+                        "<th scope=\"col\">Open</th>" +
+                        "<th scope=\"col\">High</th>" +
+                        "<th scope=\"col\">Low</th>" +
+                        "<th scope=\"col\">Close</th>" +
+                        "<th scope=\"col\">Volume</th>" +
+                        "<th scope=\"col\">Dividends</th>" +
+                        "<th scope=\"col\">Stock Splits</th>" +
+                        "</tr>"
+                    );
+
                     $.each(data["historical_data"], function (index, item) {
                         $("#historical-data-container-table").find("tbody").append(
                             "<tr>" +
