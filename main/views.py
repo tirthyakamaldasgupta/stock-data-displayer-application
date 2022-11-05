@@ -2,13 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-import yfinance as yahoo_finance
-
-
-company_information_properties = [
-    "longName",
-    "symbol"
-]
+from .yahoo_finance import yahoo_finance_company_information, yahoo_finance_historical_data
 
 
 def index(request):
@@ -17,26 +11,23 @@ def index(request):
 
 @api_view(["GET"])
 def get_yahoo_finance_company_information(request, company_name: str):
-    company = yahoo_finance.Ticker(company_name)
-
-    company_information = company.info
-
-    for company_information_property in company_information_properties:
-        if company_information_property not in company_information.keys():
-            return Response(
-                {
-                    "information": {}
-                },
-                status.HTTP_404_NOT_FOUND
-            )
-
-    company_display_name = company_information["longName"] + " " + "[" + company_information["symbol"] + "]"
+    information = yahoo_finance_company_information(company_name)
 
     return Response(
         {
-            "information": {
-                "display_name": company_display_name
-            }
+            "information": information if information else {}
         },
-        status.HTTP_200_OK
+        status.HTTP_200_OK if information else status.HTTP_404_NOT_FOUND
+    )
+
+
+@api_view(["GET"])
+def get_yahoo_finance_historical_data(request, company_name: str):
+    historical_data = yahoo_finance_historical_data(company_name)
+
+    return Response(
+        {
+            "historical_data": historical_data if historical_data else []
+        },
+        status.HTTP_200_OK if historical_data else status.HTTP_404_NOT_FOUND
     )
