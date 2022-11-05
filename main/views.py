@@ -16,26 +16,6 @@ def index(request):
 
 
 @api_view(["GET"])
-def get_yahoo_finance_historical_data(request, company_name: str):
-    company = yahoo_finance.Ticker(company_name)
-
-    historical_data = company.history()
-
-    if not historical_data.empty:
-        return Response(
-            {
-                "historical_data": historical_data.T.to_dict().values()
-            },
-            status.HTTP_200_OK
-        )
-    return Response(
-        {
-            "historical_data": []
-        },
-        status.HTTP_404_NOT_FOUND
-    )
-
-@api_view(["GET"])
 def get_yahoo_finance_company_information(request, company_name: str):
     company = yahoo_finance.Ticker(company_name)
 
