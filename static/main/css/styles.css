@@ -12,40 +12,11 @@ thead > tr > th {
     font-family: 'Qhairo', sans-serif;
 }
 
-tbody > tr > td {
+tbody > tr > td, input, .error {
     font-family: 'Product Sans', sans-serif;
 }
 
-input {
-    font-family: 'Product Sans', sans-serif;
-}
-
-.modal-content {
-    border: none;
-}
-
-.modal-header, .modal-body {
-    background-color: #404258;
-    color: white;
-    font-family: 'Product Sans', sans-serif;
-}
-
-.modal-header {
-    border-color: #404258;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.modal-header > button {
-    filter: invert(100%);
-}
-
-.modal-header > button:focus {
-    box-shadow: none;
-    outline: none;
-}
-
-.modal-body {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+.error {
+    font-size: large;
+    color: crimson;
 }

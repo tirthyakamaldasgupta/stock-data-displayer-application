@@ -2,19 +2,17 @@
 
 {% load static %}
 
-{% block title %}Yahoo Finance historical data displayer{% endblock %}
+{% block title %}Yahoo Finance stock data displayer{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
 {% endblock %}
 
 {% block body %}
-    {% include 'main/modal.html' %}
-
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <h1 class="main-headings">Yahoo finance historical data</h1>
+                <h1 class="main-headings">Yahoo finance stock data</h1>
             </div>
         </div>
     </div>
@@ -41,6 +39,7 @@
         <div class="row">
             <div class="col">
                 <h2 class="main-headings" id="information-container-table-label"></h2>
+                <span class="error" id="information-fetch-error-span"></span>
                 <table class="table table-striped-columns" id="information-container-table">
                     <thead></thead>
                     <tbody></tbody>
@@ -53,6 +52,7 @@
         <div class="row">
             <div class="col">
                 <h2 class="main-headings" id="historical-data-container-table-label"></h2>
+                <span class="error" id="historical-data-fetch-error-span"></span>
                 <table class="table table-striped-columns" id="historical-data-container-table">
                     <thead></thead>
                     <tbody></tbody>
