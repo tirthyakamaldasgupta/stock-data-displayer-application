@@ -24,13 +24,13 @@ This is a sample web application to pull the data of any stock asynchronously fr
 
     1.2. CSS
 
-    1.3. Bootstrap
+    1.3. Bootstrap (5.2)
 
-    1.4. Javascript/jQuery
+    1.4. Javascript/jQuery (3.6.1)
 
 2. Server side technologies/frameworks
 
-    2.1. Django
+    2.1. Python (3.10.8)/Django (4.1.3)
 
 ## Prerequisites
 
