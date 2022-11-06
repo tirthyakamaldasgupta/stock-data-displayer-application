@@ -19,7 +19,7 @@ class CompanyInformationFetcherConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         while self.connected:
-            await asyncio.sleep(10)
+            await asyncio.sleep(30)
 
             information = yahoo_finance_company_information(text_data)
 

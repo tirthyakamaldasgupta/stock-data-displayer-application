@@ -1,7 +1,9 @@
-var socket = null;
+const domain = "localhost:8000"
+const http_base_url = "http://" + domain
+const websocket_base_url = "ws://" + domain
 
 
-function display_historical_data() {
+function display_yahoo_finance_data() {
 
     const company_name = $("#company-search-input").val();
 
@@ -22,7 +24,7 @@ function display_historical_data() {
 
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:8000/" + company_name + "/information",
+            url: http_base_url + "/" + company_name + "/information",
             contentType: "application/json",
             success: function (data) {
                 if (data["information"]) {
@@ -42,7 +44,7 @@ function display_historical_data() {
                         "</tr>"
                     )
 
-                    var socket = new WebSocket('ws://localhost:8000/ws/v1/information');
+                    var socket = new WebSocket(websocket_base_url + "/ws/v1/information");
                     
                     socket.onopen = function (event) {
                         socket.send(company_name)
@@ -62,7 +64,7 @@ function display_historical_data() {
 
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:8000/" + company_name + "/historical-data",
+            url: http_base_url + "/" + company_name + "/historical-data",
             contentType: "application/json",
             success: function (data) {
                 if (data["historical_data"].length > 0) {
@@ -105,6 +107,6 @@ $("#company-search-input").keypress(function (event) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
 
     if (keycode == "13") {
-        display_historical_data();
+        display_yahoo_finance_data();
     }
 });
