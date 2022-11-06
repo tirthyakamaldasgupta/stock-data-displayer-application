@@ -24,9 +24,9 @@ This is a sample web application to pull the data of any stock asynchronously fr
 
     1.2. CSS
 
-    1.3. Bootstrap (Tested using CDN for representation)
+    1.3. Bootstrap
 
-    1.4. Javascript/jQuery (Tested using CDN for representation)
+    1.4. Javascript/jQuery
 
 2. Server side technologies/frameworks
 
