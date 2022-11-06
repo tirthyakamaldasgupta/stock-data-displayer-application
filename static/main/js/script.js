@@ -51,7 +51,7 @@ function display_yahoo_finance_data() {
                     }
 
                     socket.onmessage = function (event) {
-                        data = JSON.parse(event.data)
+                        const data = JSON.parse(event.data);
 
                         $("#regular-market-price-data").text(data["information"]["regular_market_price"]);
                     }
