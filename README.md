@@ -14,7 +14,7 @@ This is a sample web application to pull the data of any stock asynchronously fr
 
 2. Display the historical data of a stock.
 
-3. Refresh the information of a stock using websockets (Django channels).
+3. Refresh the information of a stock (after every 30 seconds) using websockets (Django channels).
 
 ## Development stack
 
