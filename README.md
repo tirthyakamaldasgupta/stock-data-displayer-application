@@ -24,7 +24,7 @@ This is a sample web application to pull the data of any stock asynchronously fr
 
     1.2. CSS
 
-    1.3. Bootstrap (5.2)
+    1.3. Bootstrap (5.2.2)
 
     1.4. Javascript/jQuery (3.6.1)
 
@@ -73,3 +73,5 @@ This is a sample web application to pull the data of any stock asynchronously fr
 4. Run the Django development server from the root directory.
 
     `python manage.py runserver`
+
+5. Hit the URL: http://localhost:8000 (Not http://127.0.0.1:8000) on the browser.
