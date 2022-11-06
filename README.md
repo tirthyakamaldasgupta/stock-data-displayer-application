@@ -2,11 +2,7 @@
 
 This is a sample web application to pull the data of any stock asynchronously from Yahoo and display the same.
 
-***
-
 ## Functionalities
-
-***
 
 1. Display the information about a stock.
     
@@ -21,8 +17,6 @@ This is a sample web application to pull the data of any stock asynchronously fr
 3. Refresh the information of a stock using websockets (Django channels).
 
 ## Development stack
-
-***
 
 1. Client side technologies/frameworks
 
@@ -40,13 +34,9 @@ This is a sample web application to pull the data of any stock asynchronously fr
 
 ## Prerequisites
 
-***
-
 1. A working version of Python (>=3.10) should be installed in the system.
 
 ## Instructions
-
-***
 
 1. Create a virtual environment in the root directory.
     
