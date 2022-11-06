@@ -74,4 +74,15 @@ This is a sample web application to pull the data of any stock asynchronously fr
 
     `python manage.py runserver`
 
-5. Hit the URL: http://localhost:8000 (Not http://127.0.0.1:8000) on the browser.
+5. Hit the URL: http://localhost:8000 on the browser.
+
+
+## Limitations
+
+1. Functional
+
+    1.1. The application is capable to extract the information about the stocks of a company, only if the same is searched by providing the symbol of the company, for example "AAPL" or "aapl" (in case of "Apple Inc.").
+
+2. System
+
+    2.1. The application is only capable of functioning iff accessed via http://localhost:8000, not http://127.0.0.1:8000, due to the blockage by CORS policy to access the internal APIs via JavaScript/jQuery.
