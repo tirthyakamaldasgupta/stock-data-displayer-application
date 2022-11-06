@@ -1,9 +1,12 @@
+var socket = null;
+
+
 function display_historical_data() {
 
     const company_name = $("#company-search-input").val();
 
     $("#company-search-input").val("");
-
+        
     $("#information-fetch-error-span").text("");
     $("#historical-data-fetch-error-span").text("");
     $("#information-container-table-label").text("");
@@ -39,15 +42,17 @@ function display_historical_data() {
                         "</tr>"
                     )
 
-                    // const company_information_url = "ws://localhost:8000/ws/v1/" + "information"
-
-                    // var socket = new WebSocket(company_information_url)
+                    var socket = new WebSocket('ws://localhost:8000/ws/v1/information');
                     
-                    // socket.onmessage = function(event) {
-                    //     var data = JSON.parse(event.data);
+                    socket.onopen = function (event) {
+                        socket.send(company_name)
+                    }
 
-                    //     $("#regular-market-price-data").text(data["information"]["regular_market_price"]);
-                    // }
+                    socket.onmessage = function (event) {
+                        data = JSON.parse(event.data)
+
+                        $("#regular-market-price-data").text(data["information"]["regular_market_price"]);
+                    }
                 }
             },
             error: function (data) {

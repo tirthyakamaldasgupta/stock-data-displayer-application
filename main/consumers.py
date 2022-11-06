@@ -1,6 +1,6 @@
+import asyncio
 import json
-from time import sleep
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 from .yahoo_finance import yahoo_finance_company_information
 
 
@@ -11,19 +11,23 @@ company_information_properties = [
 ]
 
 
-class WebSocketConsumer(WebsocketConsumer):
-    def connect(self):
-        self.accept()
+class CompanyInformationFetcherConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        self.connected = True
 
-        information = yahoo_finance_company_information("aapl")
+        await self.accept()
 
-        while(True):
-            self.send(
-                json.dumps(
-                    {
-                        "information": information
-                    }
-                )
+    async def receive(self, text_data):
+        while self.connected:
+            await asyncio.sleep(10)
+
+            information = yahoo_finance_company_information(text_data)
+
+            await self.send(
+                json.dumps({
+                    "information": information
+                })
             )
 
-            sleep(10)
+    async def disconnect(self, close_code):
+        self.connected = False
