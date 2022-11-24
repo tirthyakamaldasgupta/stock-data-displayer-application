@@ -1,6 +1,6 @@
 # Stock data displayer application
 
-This is a sample web application to pull the data of any stock asynchronously from Yahoo and display the same.
+This is a web application to pull the data of any stock asynchronously from Yahoo and display the same.
 
 ## Functionalities
 
